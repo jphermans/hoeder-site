@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Hoeder — privacy policy</title>
+<meta name="description" content="Hoeder's privacy policy: local-first, no account, no analytics, no advertising, no server." />
+<link rel="stylesheet" href="style.css" />
+<link rel="icon" href="seal.svg" type="image/svg+xml" />
+</head>
+<body>
+<main>
+
+  <header class="masthead">
+    <svg width="52" height="52" viewBox="0 0 64 64" role="img" aria-label="Hoeder seal">
+      <circle cx="32" cy="32" r="30.9" fill="none" stroke="var(--accent)" stroke-width="2.2" />
+      <circle cx="32" cy="32" r="27.5" fill="none" stroke="var(--line)" stroke-width="1.15" />
+      <g fill="var(--accent)">
+        <rect x="24.7" y="22.4" width="4.6" height="19.2" rx="2.3" />
+        <rect x="34.7" y="22.4" width="4.6" height="19.2" rx="2.3" />
+        <rect x="24.7" y="29.7" width="14.6" height="4.6" rx="2.3" />
+      </g>
+    </svg>
+    <div>
+      <span class="wordmark">Hoeder</span>
+      <span class="tagline">Privacy policy</span>
+    </div>
+  </header>
+
+  <h1>Privacy policy</h1>
+  <p class="lede">
+    The short version: Hoeder collects nothing, sends nothing, and has no server
+    to send anything to. What you put in the vault stays on your device until you
+    export it.
+  </p>
+  <p class="small muted">Last updated: 16 September 2026 · Applies to the Hoeder apps for iOS and Android.</p>
+
+  <div class="card">
+    <h2>What Hoeder does not do</h2>
+    <ul>
+      <li>No account, no sign-in, no email address, no profile.</li>
+      <li>No analytics, no telemetry, no usage statistics.</li>
+      <li>No advertising, no advertising identifiers, no tracking across apps or websites.</li>
+      <li>No crash reporter that reads your vault. Release builds contain no diagnostics that transmit anything.</li>
+      <li>No cloud service of ours. There is no Hoeder server holding your anchors.</li>
+      <li>No data sold, shared or disclosed — there is nothing to sell.</li>
+    </ul>
+    <p class="small muted">
+      The app does not even include a third-party analytics or advertising
+      library, which is why it needs no tracking-permission prompt.
+    </p>
+  </div>
+
+  <h2>What is stored, and where</h2>
+  <p>
+    Everything you create lives in the app's private storage on your own device:
+    the anchors and their text, photos you attach, voice notes you record, and
+    your settings. That folder is private to Hoeder; other apps cannot read it,
+    and on iOS it is excluded from the app's shared containers.
+  </p>
+
+  <h2>How it is protected</h2>
+  <ul>
+    <li>
+      <strong>Free text is encrypted</strong> with AES-256-GCM, under keys derived
+      for that purpose, before it is written to the database.
+    </li>
+    <li>
+      <strong>The vault key is random</strong> and never stored in the open. It is
+      wrapped with a key derived from your six-digit PIN using PBKDF2-HMAC-SHA256,
+      and the wrapped result is kept in the operating system's keychain (iOS
+      keychain, Android keystore). It never leaves the device.
+    </li>
+    <li>
+      <strong>Unlocking is local.</strong> A PIN is verified by decrypting the
+      wrapped key on the device; nothing is sent anywhere to check it. Biometric
+      unlock, if you enable it, stores a second copy of that key behind an
+      OS-enforced access control.
+    </li>
+    <li>
+      <strong>Photos and voice notes are files</strong> inside the app's private
+      storage, protected by the operating system's file protection, and are not
+      additionally encrypted on top of that. Anyone who can unlock your device
+      and reach the app's storage can read them.
+    </li>
+    <li>
+      <strong>Deleted means deleted</strong> on this device: deleting the vault
+      removes the database, the media and the key material.
+    </li>
+  </ul>
+  <p class="small muted">
+    The honest limits: a six-digit PIN is short, and device-level attacks —
+    a jailbroken or rooted device, malware with your device unlocked, or someone
+    who knows your PIN — are outside what any app-side encryption can promise.
+  </p>
+
+  <h2>What leaves your device</h2>
+  <ul>
+    <li>
+      <strong>Exports you make yourself.</strong> Settings offers a vault archive
+      and a printable report. Where that file goes is entirely your choice: a
+      folder on the device, a share sheet target, or a folder your device syncs.
+      Encrypted archives stay encrypted; anything else you choose to share is your
+      decision, not ours.
+    </li>
+    <li>
+      <strong>Purchases.</strong> If you subscribe to Hoeder Pro, the transaction
+      is handled by Apple or Google. We receive no name, no address, no email and
+      no payment details — only the anonymous, store-issued information needed to
+      know whether the subscription is active. Apple's and Google's own privacy
+      policies govern that processing.
+    </li>
+  </ul>
+
+  <h2>Permissions, and why they exist</h2>
+  <ul>
+    <li><strong>Camera and photo library</strong> — only when you attach a photo to an anchor, and only the item you pick.</li>
+    <li><strong>Microphone</strong> — only while you record a voice note, capped at 30 seconds.</li>
+    <li><strong>Face ID or fingerprint</strong> — only if you turn on biometric unlock, and only to read the key from the keychain.</li>
+    <li><strong>Files / document picker</strong> — only when you choose where to write an export or which file to import.</li>
+  </ul>
+  <p>
+    Refusing any of them leaves the rest of the app working. Nothing is requested
+    in the background.
+  </p>
+
+  <h2>Children</h2>
+  <p>
+    Hoeder is not directed at children and collects no personal data from anyone,
+    of any age.
+  </p>
+
+  <h2>Your rights</h2>
+  <p>
+    Because nothing is collected, there is no database of yours for us to look
+    into, export or erase. In practice, the rights you would exercise are already
+    in your hands:
+  </p>
+  <ul>
+    <li><strong>Access and portability</strong> — export the vault at any time; it is a documented, versioned archive.</li>
+    <li><strong>Erasure</strong> — delete the vault in <em>Settings › Security</em>, or uninstall the app.</li>
+    <li><strong>Objection or restriction</strong> — there is no processing to object to.</li>
+  </ul>
+  <p>
+    If you are in the EU or UK and believe something here is wrong, you have the
+    right to complain to your national data protection authority; in Belgium that
+    is the Gegevensbeschermingsautoriteit / Autorité de protection des données.
+  </p>
+
+  <h2>Changes</h2>
+  <p>
+    If a future version of Hoeder were to collect anything, this page would say so
+    before that version shipped, and the change would be described here rather
+    than buried. The date at the top is when this text last changed.
+  </p>
+
+  <h2>Contact</h2>
+  <p>
+    Hoeder is published by JPHsystems, Belgium. Privacy questions:
+    <a href="https://github.com/jphermans">@jphermans on GitHub</a>.
+  </p>
+
+  <footer>
+    <nav class="sitelinks">
+      <a href="index.html">Support</a>
+      <a href="privacy.html">Privacy policy</a>
+      <a href="terms.html">Terms of use</a>
+    </nav>
+  </footer>
+
+</main>
+</body>
+</html>

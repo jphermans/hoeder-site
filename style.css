@@ -1,0 +1,190 @@
+/*
+ * Hoeder support and policy pages.
+ *
+ * Same palette as the app: warm paper and deep moss, with the dark appearance
+ * defined once and switched by the reader's own system setting. No web fonts,
+ * no scripts, no analytics — a page that promises nothing is collected should
+ * not collect anything either. Every colour pair here is the pair of the app
+ * that is checked against WCAG AA.
+ */
+
+:root {
+  --bg: #f6f3ee;
+  --bg-elevated: #fffcf7;
+  --ink: #1c1916;
+  --ink-muted: #6b645c;
+  --line: #e6e0d6;
+  --accent: #3f5b4a;
+  --accent-soft: #e4ede7;
+  --warn: #96601d;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #171512;
+    --bg-elevated: #221f1a;
+    --ink: #f1ede4;
+    --ink-muted: #a9a093;
+    --line: #332f28;
+    --accent: #93b79f;
+    --accent-soft: #232c26;
+    --warn: #dcae68;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0 24px 96px;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+main {
+  max-width: 44rem;
+  margin: 0 auto;
+}
+
+header.masthead {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 48px 0 8px;
+}
+
+header.masthead svg {
+  flex: none;
+}
+
+header.masthead .wordmark {
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+}
+
+header.masthead .tagline {
+  display: block;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--ink-muted);
+  letter-spacing: 0;
+}
+
+h1 {
+  font-size: 34px;
+  line-height: 1.2;
+  letter-spacing: -0.4px;
+  margin: 32px 0 8px;
+}
+
+h2 {
+  font-size: 21px;
+  line-height: 1.3;
+  margin: 48px 0 8px;
+}
+
+h3 {
+  font-size: 17px;
+  margin: 28px 0 4px;
+}
+
+p,
+li {
+  color: var(--ink);
+}
+
+p.lede {
+  font-size: 19px;
+  color: var(--ink-muted);
+}
+
+a {
+  color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+ul {
+  padding-left: 22px;
+}
+
+li {
+  margin: 6px 0;
+}
+
+.card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 20px 22px;
+  margin: 20px 0;
+}
+
+.card h2,
+.card h3 {
+  margin-top: 0;
+}
+
+.muted {
+  color: var(--ink-muted);
+}
+
+.small {
+  font-size: 14px;
+}
+
+.warn {
+  color: var(--warn);
+}
+
+dl.faq {
+  margin: 0;
+}
+
+dl.faq dt {
+  font-weight: 600;
+  margin-top: 22px;
+}
+
+dl.faq dd {
+  margin: 4px 0 0;
+  color: var(--ink-muted);
+}
+
+footer {
+  margin-top: 64px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  font-size: 14px;
+  color: var(--ink-muted);
+}
+
+footer a {
+  color: var(--ink-muted);
+}
+
+nav.sitelinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 16px;
+  }
+  h1 {
+    font-size: 28px;
+  }
+}
