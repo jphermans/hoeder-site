@@ -35,6 +35,27 @@
   </p>
 
   <div class="card">
+    <h2>1.1.3 — build 5</h2>
+    <p class="small muted">Export and import say what happened, and export checks its own work.</p>
+
+    <h3>It speaks up now</h3>
+    <p>
+      A passphrase that was too short, or typed differently in the second field, was
+      reported as a small caption underneath a card. Tapping Export and seeing
+      nothing happen read as "the export is broken" — while the export had simply
+      stopped. Both cases now raise a message, and so does the outcome: the file
+      name, its size and where it lives; or the exact reason it failed.
+    </p>
+
+    <h3>Export checks its own work</h3>
+    <p>
+      After writing, the app reads the file back and refuses to report success if
+      nothing — or an empty file — landed, because an export that silently wrote
+      nothing is the worst kind: the user then believes they have a backup.
+    </p>
+  </div>
+
+  <div class="card">
     <h2>1.1.2 — build 4</h2>
     <p class="small muted">A missing file says so, and a reinstall can no longer blank a picture.</p>
 
