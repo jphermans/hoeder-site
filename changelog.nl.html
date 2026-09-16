@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Hoeder — version history</title>
+<meta name="description" content="Every version of Hoeder that has been built, with what changed and why." />
+<link rel="stylesheet" href="style.css" />
+<link rel="icon" href="seal.svg" type="image/svg+xml" />
+</head>
+<body>
+<main>
+
+  <header class="masthead">
+    <svg width="52" height="52" viewBox="0 0 64 64" role="img" aria-label="Hoeder seal">
+      <circle cx="32" cy="32" r="30.9" fill="none" stroke="var(--accent)" stroke-width="2.2" />
+      <circle cx="32" cy="32" r="27.5" fill="none" stroke="var(--line)" stroke-width="1.15" />
+      <g fill="var(--accent)">
+        <rect x="24.7" y="22.4" width="4.6" height="19.2" rx="2.3" />
+        <rect x="34.7" y="22.4" width="4.6" height="19.2" rx="2.3" />
+        <rect x="24.7" y="29.7" width="14.6" height="4.6" rx="2.3" />
+      </g>
+    </svg>
+    <div>
+      <span class="wordmark">Hoeder</span>
+      <span class="tagline">A vault for the few things that must survive you.</span>
+    </div>
+  </header>
+
+  <h1>Version history</h1>
+  <p class="lede">
+    What changed, in the order it changed. The version you are holding is in the
+    app under <em>Settings › About</em>, which shows the current list; this page
+    keeps all of it.
+  </p>
+
+  <p class="small muted">
+    Language / taal / langue :
+    <a href="changelog.html">English</a> ·
+    <a href="changelog.nl.html">Nederlands</a> ·
+    <a href="changelog.fr.html">Français</a>
+  </p>
+
+  <div class="card">
+    <h2>1.1.7 — build 9</h2>
+    <p class="small muted">De versiegeschiedenis, in je eigen taal.</p>
+    <p>
+      De app linkt nu naar de versiegeschiedenis **in de taal die je in de app hebt gekozen**, in plaats van altijd naar de Engelse pagina. En die pagina bestaat voortaan in drie talen: dezelfde geschiedenis, dezelfde volgorde, zonder samenvatting.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>1.1.6 — build 8</h2>
+    <p class="small muted">Een pincode van vier cijfers, als je dat wil.</p>
+    <p>
+      **De pincode mag ook vier cijfers zijn — jouw keuze, gemaakt bij de setup.** Vier cijfers betekent tienduizend mogelijkheden in plaats van een miljoen, dus doet de app wat er eerlijk aan te doen valt: een kluis met vier cijfers leidt de sleutel **acht keer trager af** (die kost wordt bij de kluis opgeslagen, dus hij blijft voor altijd kloppen), en het scherm waar je kiest zegt gewoon wat de ruil is in plaats van je stilletjes de zwakkere deur te laten nemen.
+    </p>
+    <p>
+      Elk pincode-toetsenbord — setup, ontgrendelen, wijzigen — neemt de lengte waarmee de kluis gemaakt is. Dat is geen versiering: een kluis met vier cijfers op een blok van zes is een kluis die niemand meer open krijgt. Tests controleren het per scherm, en dat de keuze in alle drie de talen bestaat.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>1.1.5 — build 7</h2>
+    <p class="small muted">Over staat nu in de tabbalk.</p>
+    <p>
+      **Over heeft een eigen plek in de tabbalk.** Het was een rij in Instellingen, in een kaart naast Pro, de gids en het privacybeleid — drie buren die er niets mee te maken hebben. De versie die je vasthoudt, wat er veranderd is, waar je data staat en wie de app maakt zijn nu één tik weg, onder een eigen grote titel.
+    </p>
+    <p>
+      De rij in Instellingen is weg, dus er is precies één weg naar binnen. Dat is gecontroleerd en niet aangenomen: een test kijkt of de tab gedeclareerd is, of het oude scherm `settings/about` niet meer bestaat, en of niets in de app er nog naar linkt.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>1.1.4 — build 6</h2>
+    <p class="small muted">De naam van de maker op het opstartscherm.</p>
+    <p>
+      **Het opstartscherm draagt de naam van de maker.** `JPHsystems` komt onder de tagline in beeld als derde en stilste tel, zodat het eerste dat de app toont is wie hem gemaakt heeft.
+    </p>
+    <p>
+      Twee beslissingen erachter. De regel staat in `src/config/brand.ts` en wordt door het opstartscherm gebruikt, zodat hij niet kan afwijken van wat About en de voorwaarden zeggen. En hij hoort bij het *JavaScript*-opstartscherm, niet bij de native launch-afbeelding: die is één bitmap op een vaste breedte, dus tekst erin zou het zegel kleiner maken en een zichtbare sprong geven op het moment dat de app overneemt. Onder de tagline is op het native scherm leegte — precies waar de regel hoort.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>1.1.3 — build 5</h2>
+    <p class="small muted">Export en import zeggen wat er gebeurt.</p>
+    <p>
+      **Export en import zeggen nu wat er gebeurt.** Een te korte of niet-identieke passphrase werd gemeld als een klein regeltje onder een kaart — op Export tikken en niets zien gebeuren las als “de export is stuk”, terwijl de export in werkelijkheid al gestopt was. Beide gevallen geven nu een melding én markeren het veld, en dat geldt ook voor de afloop: bij succes de bestandsnaam, de grootte en waar het staat; bij mislukking de echte reden in plaats van een schouderophalen.
+    </p>
+    <p>
+      **De export controleert zijn eigen werk.** Na het schrijven leest de app het bestand terug en weigert succes te melden als er niets — of een leeg bestand — is neergezet. Een export die stilletjes niets wegschrijft is de gevaarlijkste soort, want dan gelooft de gebruiker dat hij een back-up heeft.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>1.1.2 — build 4</h2>
+    <p class="small muted">Een ontbrekende foto zegt het nu.</p>
+    <p>
+      **Een ontbrekende foto zegt het nu.** Het fotovlak was een `<Image>` zonder foutafhandeling: een bestand dat niet geladen kon worden liet een leeg rechthoekje achter terwijl het anker en de knop “foto verwijderen” er nog stonden — dat leest als een kapotte app in plaats van een ontbrekend bestand. Het scherm zegt nu dat het bestand niet op dit toestel staat, en dat het anker en zijn gegevens intact zijn.
+    </p>
+    <p>
+      **Opgeslagen mediapaden worden opgelost, niet vertrouwd.** `media.path` houdt een absolute URI, en iOS geeft een app bij elke herinstallatie een nieuw container-UUID: een oud pad ziet er dan volkomen geldig uit terwijl het naar een container wijst die niet meer bestaat — de rij staat er, het bestand staat elders, en de foto laadt nooit. Wat ertoe doet (`<anchorId>/<bestand>`) wordt bewaard en de wortel opnieuw opgebouwd tegen de container die in gebruik is.
+    </p>
+    <p>
+      **Een media-inventaris bij elke start.** De app controleert of de bestanden die haar database belooft echt bestaan, telt bestanden die geen enkele rij noemt, schrijft de uitkomst in het auditspoor — en verwijdert de ongerefereerde, want een foto verwijderen moet betekenen dat de bytes weg zijn in plaats van verborgen voor de interface.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>1.1.1 — build 3</h2>
+    <p class="small muted">Eén bestand, één extensie, en het importeert echt.</p>
+    <p>
+      **Eén bestand, één extensie, en het importeert echt.** De export schreef vroeger twee dingen — waarvan één een `.zip` met base64 *tekst* onder een `.zip`-naam, die nooit te importeren viel — en noch het scherm noch de documentatie zei welke de echte back-up was. Er is er nu precies één: `hoeder-vault-<datum>.hoeder`, verzegeld, met `vault.json` plus elke foto en spraaknotitie onder zijn eigen anker.
+    </p>
+    <p>
+      **Een back-up die een nieuwe telefoon kan openen.** Het bestand werd verzegeld met de kluissleutel, die willekeurig is en in de keychain van dít toestel zit — een export kon dus alleen ooit geopend worden op het toestel dat hem schreef, precies niet de situatie waarvoor een back-up bestaat. Het bestand wordt nu verzegeld met een **passphrase die jij kiest**, met het zout en de kost in het bestand, zodat het overal opent. De supportpagina beloofde al die tijd een passphrase; nu vraagt de code er ook een.
+    </p>
+    <p>
+      **Import zegt wat er mis is.** Eén bericht dekte een verkeerde passphrase, een vreemd bestand, een beschadigd archief en een onleesbaar bestand. Elk heeft nu zijn eigen zin, in drie talen, zodat een fout aan te pakken is in plaats van te raden.
+    </p>
+    <p>
+      **Gecontroleerd, niet aangenomen:** een test bouwt een kluis met twee ankers — één met een foto en een spraaknotitie van 12 seconden — verzegelt die via het echte bestandsformaat, opent hem opnieuw en controleert dat elk gegeven (type, titel, waarom, zorg, overdracht) onveranderd is, dat beide media nog aan *hun* anker hangen met het juiste soort en de juiste duur, en dat de bytes onder de vermelding staan die elk record noemt.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>1.1 — build 2</h2>
+    <p class="small muted">De eerste versie die klaar is voor de twee stores.</p>
+    <p>
+      De eerste versie die klaar is voor de twee stores.
+    </p>
+    <p>
+      **Je kluis staat niet meer in de map die iOS deelt.** De database en de foto's verhuisden naar de privémap van de app, en alleen geëxporteerde back-ups blijven in `Documents/Backups` — dat is juist wat ze vindbaar maakt: **Bestanden → Op mijn iPhone → Hoeder → Backups**. Foto's en spraaknotities zijn niet versleuteld, dus vóór deze wijziging zou het aanzetten van bestandsdeling ze zonder de pincode hebben blootgelegd. Bestaande kluizen migreren bij de eerste start, bestanden eerst en paden daarna.
+    </p>
+    <p>
+      **Instellingen → About** is nu een echt scherm: de versie en build uit het binaire bestand zelf, wat er veranderd is, waar je data staat, en links naar de supportpagina en naar dit bestand.
+    </p>
+    <p>
+      **Android gehard.** Het slotscherm zet altijd `FLAG_SECURE`, zodat het pincode-toetsenbord niet in een schermafdruk of in de taakwisselaar kan belanden. De permissie voor schermoverlays wordt bij het bouwen verwijderd. Root, jailbreak en emulatorstatus worden uitgelezen en gemeld in Instellingen → Beveiliging, met de eerlijke kanttekening dat ankettekst versleuteld blijft terwijl foto's en spraaknotities dat niet zijn — en zonder de pretentie dat een geroote telefoon betrouwbaar te detecteren valt.
+    </p>
+    <p>
+      **Ontgrendelen is snel.** De kluissleutel uit de pincode afleiden was één synchrone PBKDF2-lus van 120 000 iteraties — gemeten op 8,6 seconden op het toestel, omdat Hermes geen JIT heeft. Het draait nu in de crypto van het systeem (`CommonCrypto` op iOS, `javax.crypto` op Android) en duurt ongeveer 30 ms, met hetzelfde aantal iteraties en aantoonbaar identieke bytes, want de sleutel is deel van het kluisformaat.
+    </p>
+    <p>
+      **Licht en donker.** Een echt donker thema, drie standen in Instellingen (Automatisch/Licht/Donker), en een test die de contrastverhouding van beide paletten berekent — die vond een onderschriftkleur die WCAG AA niet haalde op 3,31:1 en werd aangepast naar 4,76:1.
+    </p>
+    <p>
+      **Een opstartscherm dat aankomt.** Een merk dat niet verspringt bij de overgang van het native launch-scherm naar de app: 1,4 s bij de eerste start en 0,65 s daarna.
+    </p>
+    <p>
+      **Democontent voor de store-review**, in drie talen, met getekende in plaats van stockfoto's: vijf ankers, één van elk type, zodat een reviewer in ongeveer een minuut een gevulde kluis ziet.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>1.0 — build 1</h2>
+    <p class="small muted">Interne build. Nooit verspreid.</p>
+    <p>
+      De kluis zelf: pincode van zes cijfers, een AES-256-GCM-kluissleutel omhuld door een met PBKDF2 afgeleide sleutel in de keychain van het systeem, optionele biometrische ontgrendeling, vijf ankertypes met elk drie lagen (nu, zorg, overdracht), foto's en spraaknotities van 20 seconden, de Jaarring, export en import, een tweede beheerder, en Nederlands, Frans en Engels doorheen alles.
+    </p>
+  </div>
+
+  <footer>
+    <p>
+      Hoeder is published by JPHsystems, Belgium.
+    </p>
+    <nav class="sitelinks">
+      <a href="index.html">Support</a>
+      <a href="changelog.html">Version history</a>
+      <a href="privacy.html">Privacy policy</a>
+      <a href="terms.html">Terms of use</a>
+    </nav>
+  </footer>
+
+</main>
+</body>
+</html>

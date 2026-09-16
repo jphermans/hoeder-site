@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Hoeder — version history</title>
+<meta name="description" content="Every version of Hoeder that has been built, with what changed and why." />
+<link rel="stylesheet" href="style.css" />
+<link rel="icon" href="seal.svg" type="image/svg+xml" />
+</head>
+<body>
+<main>
+
+  <header class="masthead">
+    <svg width="52" height="52" viewBox="0 0 64 64" role="img" aria-label="Hoeder seal">
+      <circle cx="32" cy="32" r="30.9" fill="none" stroke="var(--accent)" stroke-width="2.2" />
+      <circle cx="32" cy="32" r="27.5" fill="none" stroke="var(--line)" stroke-width="1.15" />
+      <g fill="var(--accent)">
+        <rect x="24.7" y="22.4" width="4.6" height="19.2" rx="2.3" />
+        <rect x="34.7" y="22.4" width="4.6" height="19.2" rx="2.3" />
+        <rect x="24.7" y="29.7" width="14.6" height="4.6" rx="2.3" />
+      </g>
+    </svg>
+    <div>
+      <span class="wordmark">Hoeder</span>
+      <span class="tagline">A vault for the few things that must survive you.</span>
+    </div>
+  </header>
+
+  <h1>Version history</h1>
+  <p class="lede">
+    What changed, in the order it changed. The version you are holding is in the
+    app under <em>Settings › About</em>, which shows the current list; this page
+    keeps all of it.
+  </p>
+
+  <p class="small muted">
+    Language / taal / langue :
+    <a href="changelog.html">English</a> ·
+    <a href="changelog.nl.html">Nederlands</a> ·
+    <a href="changelog.fr.html">Français</a>
+  </p>
+
+  <div class="card">
+    <h2>1.1.7 — build 9</h2>
+    <p class="small muted">L'historique des versions, dans votre langue.</p>
+    <p>
+      L'app renvoie désormais vers l'historique **dans la langue que vous avez choisie dans l'app**, au lieu de toujours renvoyer vers la page anglaise. Et cette page existe maintenant en trois langues : la même histoire, dans le même ordre, sans résumé.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>1.1.6 — build 8</h2>
+    <p class="small muted">Un code à quatre chiffres, si c'est ce que vous voulez.</p>
+    <p>
+      **Le code peut aussi faire quatre chiffres — votre choix, fait à l'installation.** Quatre chiffres, c'est dix mille possibilités au lieu d'un million ; l'app fait donc ce qui peut honnêtement être fait : un coffre à quatre chiffres dérive sa clé **huit fois plus lentement** (ce coût est stocké avec le coffre, il reste donc juste pour toujours), et l'écran du choix dit clairement ce qu'on échange au lieu de vous laisser prendre en silence la porte la plus faible.
+    </p>
+    <p>
+      Chaque pavé de code — installation, déverrouillage, modification — prend la longueur avec laquelle le coffre a été créé. Ce n'est pas décoratif : un coffre à quatre chiffres sur un pavé à six est un coffre que plus personne n'ouvre. Des tests le vérifient écran par écran, et que le choix existe dans les trois langues.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>1.1.5 — build 7</h2>
+    <p class="small muted">À propos a désormais sa place dans la barre d'onglets.</p>
+    <p>
+      **À propos a sa propre place dans la barre d'onglets.** C'était une ligne dans Réglages, dans une carte à côté de Pro, du guide et de la politique de confidentialité — trois voisins qui n'ont rien à voir avec elle. La version que vous tenez, ce qui a changé, où sont vos données et qui fait l'app sont maintenant à un tap, sous leur propre grand titre.
+    </p>
+    <p>
+      La ligne dans Réglages a disparu : il n'y a donc qu'une seule entrée. C'est vérifié et non supposé — un test contrôle que l'onglet est déclaré, que l'ancien écran `settings/about` n'existe plus, et que plus rien dans l'app ne pointe vers lui.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>1.1.4 — build 6</h2>
+    <p class="small muted">Le nom du fabricant sur l'écran de démarrage.</p>
+    <p>
+      **L'écran de démarrage porte le nom du fabricant.** `JPHsystems` apparaît sous la signature comme troisième temps, le plus discret : la première chose que l'app montre, c'est qui l'a faite.
+    </p>
+    <p>
+      Deux décisions derrière cela. La ligne vit dans `src/config/brand.ts` et est utilisée par l'écran de démarrage, pour qu'elle ne puisse pas diverger de ce que disent À propos et les conditions. Et elle fait partie de l'écran de démarrage *JavaScript*, pas de l'image de lancement native : celle-ci est un seul bitmap mis à l'échelle sur une largeur fixe, donc du texte incrusté rétrécirait le sceau et produirait un saut visible au passage de relais. Sous la signature, l'écran natif est vide — exactement là où la ligne a sa place.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>1.1.3 — build 5</h2>
+    <p class="small muted">L'export et l'import s'expriment désormais.</p>
+    <p>
+      **L'export et l'import s'expriment désormais.** Une phrase de passe trop courte ou différente était signalée par une petite légende sous une carte — taper sur Exporter sans rien voir se lire comme « l'export est cassé », alors que l'export s'était en fait arrêté. Les deux cas déclenchent maintenant une alerte en plus de marquer le champ, et le résultat aussi : le nom du fichier, sa taille et son emplacement en cas de succès ; la vraie raison en cas d'échec, plutôt qu'un haussement d'épaules.
+    </p>
+    <p>
+      **L'export vérifie son propre travail.** Après l'écriture, l'app relit le fichier et refuse de signaler un succès si rien — ou un fichier vide — n'a été écrit. Un export qui n'écrit rien en silence est le pire des cas : l'utilisateur croit alors avoir une sauvegarde.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>1.1.2 — build 4</h2>
+    <p class="small muted">Une photo manquante le dit maintenant.</p>
+    <p>
+      **Une photo manquante le dit maintenant.** La zone photo était une `<Image>` sans gestion d'erreur : un fichier qui ne se chargeait pas laissait un rectangle vide alors que l'ancre et son bouton « retirer la photo » étaient toujours là — cela se lit comme une app cassée plutôt qu'un fichier manquant. L'écran indique désormais que le fichier n'est pas sur cet appareil, et que l'ancre et ses données sont intactes.
+    </p>
+    <p>
+      **Les chemins des médias sont résolus, pas crus sur parole.** `media.path` contient une URI absolue, et iOS donne à l'app un nouveau conteneur UUID à chaque réinstallation : l'ancien chemin a alors l'air parfaitement valide tout en pointant vers un conteneur qui n'existe plus — la ligne est là, le fichier est ailleurs, et l'image ne se charge jamais. Ce qui compte (`<anchorId>/<fichier>`) est conservé et la racine reconstruite contre le conteneur en usage.
+    </p>
+    <p>
+      **Un inventaire des médias à chaque lancement.** L'app vérifie que les fichiers que sa base de données promet existent vraiment, compte les fichiers qu'aucune ligne ne mentionne, écrit le résultat dans la piste d'audit — et supprime les non référencés, car supprimer une photo doit vouloir dire que les octets ont disparu, et non qu'ils sont cachés à l'interface.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>1.1.1 — build 3</h2>
+    <p class="small muted">Un fichier, une extension, et il s'importe vraiment.</p>
+    <p>
+      **Un fichier, une extension, et il s'importe vraiment.** L'export écrivait autrefois deux choses — dont un `.zip` contenant du *texte* base64 sous un nom `.zip`, impossible à importer — et ni l'écran ni la documentation ne disaient laquelle était la vraie sauvegarde. Il n'y en a plus qu'une : `hoeder-vault-<date>.hoeder`, scellé, contenant `vault.json` plus chaque photo et note vocale sous sa propre ancre.
+    </p>
+    <p>
+      **Une sauvegarde qu'un nouveau téléphone peut ouvrir.** Le fichier était scellé avec la clé du coffre, qui est aléatoire et vit dans le trousseau de *cet* appareil — un export ne pouvait donc s'ouvrir que sur l'appareil qui l'avait écrit, exactement pas la situation pour laquelle une sauvegarde existe. Le fichier est désormais scellé avec une **phrase de passe que vous choisissez**, le sel et le coût étant stockés dans le fichier, de sorte qu'il s'ouvre n'importe où. La page d'assistance promettait une phrase de passe depuis le début ; le code en demande donc une.
+    </p>
+    <p>
+      **L'import dit ce qui ne va pas.** Un seul message couvrait une mauvaise phrase de passe, un fichier étranger, une archive endommagée et un fichier illisible. Chacun a sa propre phrase maintenant, dans les trois langues, pour qu'un échec puisse être traité au lieu d'être deviné.
+    </p>
+    <p>
+      **Vérifié, pas supposé :** un test construit un coffre avec deux ancres — l'une contenant une photo et une note vocale de 12 secondes — le scelle par le vrai format de fichier, le rouvre et vérifie que chaque donnée (type, titre, pourquoi, soin, transmission) est inchangée, que les deux médias sont toujours attachés à *leur* ancre avec le bon type et la bonne durée, et que les octets se trouvent sous l'entrée que chaque enregistrement nomme.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>1.1 — build 2</h2>
+    <p class="small muted">La première version préparée pour les deux stores.</p>
+    <p>
+      La première version préparée pour les deux stores.
+    </p>
+    <p>
+      **Votre coffre n'est plus dans le dossier qu'iOS partage.** La base de données et les photos ont déménagé vers le dossier privé de l'app, et seules les sauvegardes exportées restent dans `Documents/Backups` — c'est justement ce qui les rend trouvables : **Fichiers → Sur mon iPhone → Hoeder → Backups**. Les photos et notes vocales ne sont pas chiffrées, donc avant ce changement, activer le partage de fichiers les aurait exposées sans le code. Les coffres existants migrent au premier lancement, les fichiers d'abord et les chemins ensuite.
+    </p>
+    <p>
+      **Réglages → À propos** est maintenant un vrai écran : la version et le build pris dans le binaire lui-même, ce qui a changé, où sont vos données, et des liens vers la page d'assistance et vers ce fichier.
+    </p>
+    <p>
+      **Android durci.** L'écran de verrouillage active toujours `FLAG_SECURE`, pour que le pavé du code ne finisse pas dans une capture d'écran ou dans le sélecteur de tâches. La permission de superposition d'écran est retirée à la compilation. L'état root, jailbreak et émulateur est lu et signalé dans Réglages → Sécurité, avec la réserve honnête que le texte des ancres reste chiffré tandis que les photos et notes vocales ne le sont pas — et sans prétendre qu'un téléphone rooté se détecte de façon fiable.
+    </p>
+    <p>
+      **Le déverrouillage est rapide.** Dériver la clé du coffre depuis le code était une boucle PBKDF2 synchrone de 120 000 itérations — mesurée à 8,6 secondes sur l'appareil, parce que Hermes n'a pas de JIT. Elle tourne désormais dans la crypto du système (`CommonCrypto` sur iOS, `javax.crypto` sur Android) et prend environ 30 ms, avec le même nombre d'itérations et des octets vérifiés identiques, car la clé fait partie du format du coffre.
+    </p>
+    <p>
+      **Clair et sombre.** Une vraie apparence sombre, trois états dans Réglages (Automatique/Clair/Sombre), et un test qui calcule le contraste réel des deux palettes — il a trouvé une couleur de légende qui échouait au WCAG AA à 3,31:1, corrigée à 4,76:1.
+    </p>
+    <p>
+      **Un écran de démarrage qui arrive.** Une marque qui ne bouge pas au passage de l'écran de lancement natif à l'app : 1,4 s au premier lancement et 0,65 s ensuite.
+    </p>
+    <p>
+      **Du contenu de démonstration pour la revue des stores**, en trois langues, avec des photos dessinées plutôt que des photos de banque : cinq ancres, une de chaque type, pour qu'un relecteur voie un coffre rempli en une minute environ.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>1.0 — build 1</h2>
+    <p class="small muted">Build interne. Jamais distribué.</p>
+    <p>
+      Le coffre lui-même : code à six chiffres, une clé AES-256-GCM encapsulée par une clé dérivée PBKDF2 dans le trousseau du système, déverrouillage biométrique optionnel, cinq types d'ancres à trois couches chacune (maintenant, soin, transmission), photos et notes vocales de 20 secondes, l'Anneau annuel, export et import, un second dépositaire, et le néerlandais, le français et l'anglais partout.
+    </p>
+  </div>
+
+  <footer>
+    <p>
+      Hoeder is published by JPHsystems, Belgium.
+    </p>
+    <nav class="sitelinks">
+      <a href="index.html">Support</a>
+      <a href="changelog.html">Version history</a>
+      <a href="privacy.html">Privacy policy</a>
+      <a href="terms.html">Terms of use</a>
+    </nav>
+  </footer>
+
+</main>
+</body>
+</html>
