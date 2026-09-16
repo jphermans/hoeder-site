@@ -35,6 +35,34 @@
   </p>
 
   <div class="card">
+    <h2>1.1.2 — build 4</h2>
+    <p class="small muted">A missing file says so, and a reinstall can no longer blank a picture.</p>
+
+    <h3>A missing photograph says so</h3>
+    <p>
+      The photo area was an image with no error handling, so a file that could not
+      be loaded left an empty rectangle while the anchor and its "remove photo"
+      control were still on screen. It now states that the file is not on this
+      device, and that the anchor and its details are intact.
+    </p>
+
+    <h3>Paths are resolved, not trusted</h3>
+    <p>
+      Stored media paths are absolute, and iOS gives an app a new container
+      identifier on reinstall — an old path then looks valid while pointing
+      somewhere that no longer exists. The part that matters is kept and the root
+      rebuilt against the container in use.
+    </p>
+
+    <h3>A media inventory at every launch</h3>
+    <p>
+      The app checks that the files its database promises actually exist, counts
+      files that no row refers to, records the answer, and deletes the
+      unreferenced ones: deleting a photograph has to mean the bytes are gone.
+    </p>
+  </div>
+
+  <div class="card">
     <h2>1.1.1 — build 3</h2>
     <p class="small muted">One file, one extension, and a backup a new phone can open.</p>
 
