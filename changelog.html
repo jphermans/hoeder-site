@@ -42,6 +42,20 @@
   </p>
 
   <div class="card">
+    <h2>1.1.9 — build 11</h2>
+    <p class="small muted">Alerts that belong to the app.</p>
+    <p>
+      **Every alert was the system dialog** — system grey, system-blue buttons, the system font, and on Android a different look again. The two that matter most, a failed backup and a deleted vault, looked like they came from another application.
+    </p>
+    <p>
+      They are now drawn by Hoeder itself, on the same `Card` as every other panel, so the surface, radius, border and shadow cannot drift away: warm paper in light mode, lifted charcoal in dark, one accent, and the app's own red for anything destructive. The platform differences stay where the theme already put them — iOS lays the buttons out in a row with the dismissive action on the left, Android stacks them and leads with the confirming one.
+    </p>
+    <p>
+      Details that matter in use: a destructive confirmation cannot be dismissed by tapping outside it, and the body text is selectable, because it usually names a file and its size. A test now fails the build if any screen reaches for the system dialog again — checked in the light and the dark appearance, on a device.
+    </p>
+  </div>
+
+  <div class="card">
     <h2>1.1.8 — build 10</h2>
     <p class="small muted">A backup must have a passphrase. Now it cannot exist without one.</p>
     <p>
