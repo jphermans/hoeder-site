@@ -42,6 +42,20 @@
   </p>
 
   <div class="card">
+    <h2>1.1.8 — build 10</h2>
+    <p class="small muted">Une sauvegarde doit avoir une phrase de passe. Elle ne peut plus exister sans.</p>
+    <p>
+      **La phrase de passe était exigée par l'écran, mais pas par le code qui écrit le fichier.** Une phrase vide ou de quatre caractères aurait produit un fichier scellé avec une clé dérivée de presque rien — chiffré de nom seulement, et ouvert à qui connaît le format. `sealVaultFile` est le seul endroit où un fichier de coffre est créé, et refuse désormais tout ce qui fait moins de huit caractères. Cette dernière ligne de défense est là exprès : l'écran est un *appelant*, pas une garantie, et une sauvegarde automatique ajoutée plus tard appellerait la même fonction. Le contrôle est aussi dans le service qu'utilise l'écran.
+    </p>
+    <p>
+      **Une phrase de passe refusée le dit maintenant.** Avant, cela retombait sur « l'export a échoué », ce qui envoie le lecteur regarder son stockage au lieu du champ juste au-dessus du bouton.
+    </p>
+    <p>
+      **Verrouillé par des tests :** qu'un fichier de coffre ne peut pas être scellé sans vraie phrase de passe, que les écrans d'export et de restauration annoncent le succès comme l'échec, et que chaque texte demandé par ces écrans existe dans les trois langues — une clé manquante s'affiche sous son propre nom, et c'est ainsi qu'une alerte traduite devient `export.importDone` à l'écran.
+    </p>
+  </div>
+
+  <div class="card">
     <h2>1.1.7 — build 9</h2>
     <p class="small muted">L'historique des versions, dans votre langue.</p>
     <p>

@@ -42,6 +42,20 @@
   </p>
 
   <div class="card">
+    <h2>1.1.8 — build 10</h2>
+    <p class="small muted">A backup must have a passphrase. Now it cannot exist without one.</p>
+    <p>
+      **The passphrase was required by the screen, but not by the code that writes the file.** An empty or four-character one would have produced a file sealed with a key derived from almost nothing — encrypted in name only, and open to anyone who knows the format. `sealVaultFile` is the only place a vault file is ever created, and it now refuses anything shorter than eight characters. That is the last line of defence on purpose: the screen is a *caller*, not a guarantee, and an automatic backup added later would call the same function. The check is in the service the screen uses as well.
+    </p>
+    <p>
+      **A refused passphrase now says so.** It used to fall through to "the export failed", which sends the reader to look at their storage instead of at the field right above the button.
+    </p>
+    <p>
+      **Guarded by tests:** that a vault file cannot be sealed without a real passphrase, that the export and restore screens announce both success and failure, and that every string those screens ask for exists in all three languages — a missing key renders as its own name, which is how a translated alert turns into `export.importDone` on screen.
+    </p>
+  </div>
+
+  <div class="card">
     <h2>1.1.7 — build 9</h2>
     <p class="small muted">The version history, in your own language.</p>
     <p>

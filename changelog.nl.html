@@ -42,6 +42,20 @@
   </p>
 
   <div class="card">
+    <h2>1.1.8 — build 10</h2>
+    <p class="small muted">Een back-up moet een passphrase hebben. Nu kan hij niet meer zonder bestaan.</p>
+    <p>
+      **De passphrase werd door het scherm geëist, maar niet door de code die het bestand schrijft.** Een lege of vier tekens tellende passphrase zou een bestand hebben opgeleverd dat met een sleutel uit vrijwel niets is verzegeld — versleuteld in naam alleen, en open voor wie het formaat kent. `sealVaultFile` is de enige plek waar een kluisbestand ontstaat, en weigert nu alles korter dan acht tekens. Die laatste verdedigingslijn staat daar met opzet: het scherm is een *aanroeper*, geen garantie, en een automatische back-up die er later bijkomt roept dezelfde functie aan. De controle zit ook in de service die het scherm gebruikt.
+    </p>
+    <p>
+      **Een geweigerde passphrase zegt dat nu ook.** Vroeger viel dat terug op "de export is mislukt", en dan gaat de lezer naar zijn opslag kijken in plaats van naar het veld boven de knop.
+    </p>
+    <p>
+      **Vastgelegd met tests:** dat een kluisbestand niet zonder echte passphrase verzegeld kan worden, dat de export- en herstelschermen zowel succes als mislukking melden, en dat elke tekst die die schermen vragen in alle drie de talen bestaat — een ontbrekende sleutel toont zijn eigen naam, en zo wordt een vertaalde melding `export.importDone` op het scherm.
+    </p>
+  </div>
+
+  <div class="card">
     <h2>1.1.7 — build 9</h2>
     <p class="small muted">De versiegeschiedenis, in je eigen taal.</p>
     <p>
