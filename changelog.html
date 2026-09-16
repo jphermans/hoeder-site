@@ -35,6 +35,44 @@
   </p>
 
   <div class="card">
+    <h2>1.1.1 — build 3</h2>
+    <p class="small muted">One file, one extension, and a backup a new phone can open.</p>
+
+    <h3>One file instead of two</h3>
+    <p>
+      Export used to write two artefacts — one of them a <code>.zip</code> holding
+      base64 <em>text</em> under a <code>.zip</code> name, which could never be
+      imported — and nothing said which one was the real backup. There is now
+      exactly one: <code>hoeder-vault-&lt;date&gt;.hoeder</code>.
+    </p>
+
+    <h3>A passphrase, so a backup survives a lost phone</h3>
+    <p>
+      The file was sealed with the vault key, which is random and lives in this
+      device's keychain — so an export could only ever be opened on the device that
+      wrote it, which is exactly not the situation a backup is for. It is now
+      sealed with a passphrase you choose, with the salt and cost stored inside the
+      file, so it opens anywhere.
+    </p>
+
+    <h3>Import that says what is wrong</h3>
+    <p>
+      One message used to cover a wrong passphrase, a foreign file, a damaged
+      archive and an unreadable one. Each has its own sentence now, in three
+      languages.
+    </p>
+
+    <h3>Proven, not assumed</h3>
+    <p>
+      A test builds a vault with two anchors — one holding a photograph and a
+      twelve-second voice note — seals it through the real file format, opens it
+      again and checks every record (type, title, why, care, handoff), that both
+      media are still attached to <em>their</em> anchor with the right kind and
+      duration, and that the bytes sit under the entry each record names.
+    </p>
+  </div>
+
+  <div class="card">
     <h2>1.1 — build 2</h2>
     <p class="small muted">The first version prepared for the App Store and Google Play.</p>
 
