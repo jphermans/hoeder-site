@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Hoeder — version history</title>
+<meta name="description" content="Every version of Hoeder that has been built, with what changed and why." />
+<link rel="stylesheet" href="style.css" />
+<link rel="icon" href="seal.svg" type="image/svg+xml" />
+</head>
+<body>
+<main>
+
+  <header class="masthead">
+    <svg width="52" height="52" viewBox="0 0 64 64" role="img" aria-label="Hoeder seal">
+      <circle cx="32" cy="32" r="30.9" fill="none" stroke="var(--accent)" stroke-width="2.2" />
+      <circle cx="32" cy="32" r="27.5" fill="none" stroke="var(--line)" stroke-width="1.15" />
+      <g fill="var(--accent)">
+        <rect x="24.7" y="22.4" width="4.6" height="19.2" rx="2.3" />
+        <rect x="34.7" y="22.4" width="4.6" height="19.2" rx="2.3" />
+        <rect x="24.7" y="29.7" width="14.6" height="4.6" rx="2.3" />
+      </g>
+    </svg>
+    <div>
+      <span class="wordmark">Hoeder</span>
+      <span class="tagline">A vault for the few things that must survive you.</span>
+    </div>
+  </header>
+
+  <h1>Version history</h1>
+  <p class="lede">
+    What changed, in the order it changed. The version you are holding is in the
+    app under <em>Settings › About</em>, which shows the current list; this page
+    keeps all of it.
+  </p>
+
+  <div class="card">
+    <h2>1.1 — build 2</h2>
+    <p class="small muted">The first version prepared for the App Store and Google Play.</p>
+
+    <h3>Your vault is no longer in the folder iOS shares</h3>
+    <p>
+      The database and the photographs used to sit in <code>Documents</code>, which
+      is the one folder an app can expose to the Files app — and it exposes all of
+      it. Photographs and voice notes are not encrypted, so that would have made
+      them readable without the PIN. They now live in the app's private directory,
+      and only exported backups stay behind in
+      <code>Files → On My iPhone → Hoeder → Backups</code>, which is what makes
+      them findable in the first place. Existing vaults move on first launch:
+      files first, then the paths in the database that point at them.
+    </p>
+
+    <h3>About</h3>
+    <p>
+      <em>Settings › About</em> is now a real screen: the version and build taken
+      from the app itself rather than a constant, what changed, where your data
+      is, and links to this page and to support.
+    </p>
+
+    <h3>Android</h3>
+    <ul>
+      <li>The lock screen always sets <code>FLAG_SECURE</code>, so the PIN pad cannot appear in a screenshot or in the task switcher, whatever the user's screenshot setting says.</li>
+      <li>The screen-overlay permission is stripped at build time: nothing to draw over other apps, and one fewer policy declaration.</li>
+      <li>Root, jailbreak and emulator state are read and reported in <em>Settings › Security</em> — with the honest caveat, in three languages, that anchor text stays encrypted while photographs and voice notes do not. It never blocks the app: anything rooted can hide from the check, and the protection is the encryption, not a boolean.</li>
+    </ul>
+
+    <h3>Unlocking</h3>
+    <p>
+      Deriving the vault key from the PIN was a single synchronous
+      120&nbsp;000-iteration PBKDF2 loop, measured at <strong>8.6 seconds</strong>
+      on the device, because the JavaScript engine on device has no JIT. It now
+      runs in the operating system's crypto and takes about <strong>30 ms</strong>,
+      with the iteration count unchanged and the derived bytes verified identical
+      — the key is part of the vault format, so a one-byte difference would have
+      made existing vaults unreadable.
+    </p>
+
+    <h3>Appearance</h3>
+    <p>
+      A real dark appearance (warm charcoal, never pure black) with three states in
+      Settings: Automatic, Light, Dark. A test computes the WCAG contrast of every
+      text pair in both palettes, which caught a caption colour at 3.31:1 — below
+      the 4.5:1 minimum — now 4.76:1.
+    </p>
+
+    <h3>Splash</h3>
+    <p>
+      A launch screen that hands over to the app without the mark jumping size,
+      held 1.4&nbsp;s on a first run and 0.65&nbsp;s afterwards, so the app does
+      not appear to start reluctantly.
+    </p>
+
+    <h3>Demo content</h3>
+    <p>
+      Five anchors, one of each type, in the language you chose, with drawn rather
+      than stock photographs: enough for a reviewer to see a populated vault in
+      about a minute. Every demo anchor is a real anchor in the encrypted vault,
+      and removing them can only ever touch the ids the app recorded when it
+      created them.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>1.0 — build 1</h2>
+    <p class="small muted">Internal build. Never distributed.</p>
+    <p>
+      The vault itself: a six-digit PIN, a randomised AES-256-GCM vault key wrapped
+      by a PBKDF2-derived key and held in the system keychain, optional biometric
+      unlock, five anchor types with three layers each (now, care, handoff),
+      photographs and 20-second voice notes, the Year Ring, export and import, a
+      second steward, and Dutch, French and English throughout.
+    </p>
+  </div>
+
+  <footer>
+    <p>
+      Hoeder is published by JPHsystems, Belgium.
+    </p>
+    <nav class="sitelinks">
+      <a href="index.html">Support</a>
+      <a href="changelog.html">Version history</a>
+      <a href="privacy.html">Privacy policy</a>
+      <a href="terms.html">Terms of use</a>
+    </nav>
+  </footer>
+
+</main>
+</body>
+</html>
